@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-ink text-slate-100 antialiased;
+    background-image:
+      radial-gradient(ellipse 70% 50% at 15% -10%, rgba(56, 189, 248, 0.12), transparent),
+      radial-gradient(ellipse 50% 40% at 85% 0%, rgba(45, 212, 191, 0.08), transparent);
+    background-attachment: fixed;
+  }
+  ::selection {
+    @apply bg-aqua/25 text-white;
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-line/80 bg-panel/80 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.9)] backdrop-blur;
+  }
+  .panel-soft {
+    @apply rounded-xl border border-line/60 bg-panel2/60;
+  }
+  .label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400;
+  }
+  .hint {
+    @apply text-sm leading-relaxed text-slate-400;
+  }
+  .cell-input {
+    @apply h-11 w-full min-w-[3rem] rounded-lg border border-line bg-ink/70 text-center font-mono text-sm text-white outline-none transition focus:border-aqua focus:ring-2 focus:ring-aqua/20;
+  }
+  .cell-input:disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+  .table-head {
+    @apply px-3 py-2 text-center font-mono text-xs font-semibold text-slate-300;
+  }
+  .kbd {
+    @apply rounded border border-line bg-panel2 px-1.5 py-0.5 font-mono text-[10px] text-slate-300;
+  }
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #1b2c44 transparent;
+  }
+  .scroll-thin::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-line;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.35s ease-out both;
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 1.8s ease-in-out infinite;
+}
